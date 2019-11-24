@@ -10,6 +10,8 @@ import { ExpensesComponent } from "./expenses/expenses.component";
 import { IncomeComponent } from "./income/income.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule } from "@angular/forms";
+import { ExpensesFormComponent } from './expenses/expenses-form/expenses-form.component';
+import { ExpensesDetailsComponent } from './expenses/expenses-details/expenses-details.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { FormsModule } from "@angular/forms";
     HeaderComponent,
     SideBarComponent,
     ExpensesComponent,
-    IncomeComponent
+    IncomeComponent,
+    ExpensesFormComponent,
+    ExpensesDetailsComponent
   ],
   imports: [
     BrowserModule,

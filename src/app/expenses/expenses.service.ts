@@ -1,6 +1,5 @@
 import { Expense } from "./expenses.model";
 import { Injectable, Output } from "@angular/core";
-import { EventEmitter } from "events";
 import { Subject } from "rxjs";
 
 @Injectable({
@@ -9,18 +8,58 @@ import { Subject } from "rxjs";
 export class ExpensesService {
   expenseChanged = new Subject<Expense[]>();
 
+  paymentMethods = ["Debit", "Credit", "Cash"];
+  categories = {
+    Housing: ["Hydro-Quebec", "Cellphone", "Internet"],
+    Transportation: ["Opus-card", "Uber"],
+    Enterteinment: [
+      "Beers",
+      "Bar",
+      "Cinema",
+      "Party",
+      "Travelling",
+      "Barbacue",
+      "Basketball"
+    ],
+    Fooding: ["Market", "Eat Out", "Snacks"],
+    Education: ["Courses", "books", "magazines"],
+    Health: ["medicines"],
+    Products: ["Products"],
+    Personal: ["Hairdresser"]
+  };
+
+  subcategories = [];
+
   expenses: Expense[] = [
-    new Expense(new Date(), "category1", "card", "description", 10),
-    new Expense(new Date(), "category1", "card", "description", 10)
+    new Expense(
+      new Date().toDateString(),
+      "category1",
+      "card",
+      "description",
+      10
+    ),
+    new Expense(
+      new Date().toDateString(),
+      "category1",
+      "card",
+      "description",
+      10
+    )
   ];
   constructor() {}
+
+  getCategories() {
+    return { ...this.categories };
+  }
+  getPaymentMethods() {
+    return [...this.paymentMethods];
+  }
 
   getExpenses() {
     return [...this.expenses];
   }
 
   addExpenses(addedExpenses: Expense) {
-    console.log(addedExpenses);
     this.expenses = [...this.expenses, addedExpenses];
     this.expenseChanged.next([...this.expenses]);
   }

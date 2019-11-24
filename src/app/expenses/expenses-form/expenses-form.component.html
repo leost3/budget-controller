@@ -1,0 +1,69 @@
+<div class="expense-form">
+  <form (ngSubmit)="onSubmit(expenseForm)" #expenseForm="ngForm">
+    <div class="expense-form-container">
+      <div class="row">
+        <div class="form-group col-sm-2">
+          <label for="dateOfExpense">Date</label>
+          <input
+            ngModel
+            name="date"
+            type="text"
+            bsDatepicker
+            placement="bottom"
+            [bsConfig]="datepickerConfig"
+            class="form-control"
+            (value)="(todayDate)"
+          />
+        </div>
+        <div class="form-group col-sm-2">
+          <label for="category">Category</label>
+
+          <select ngModel class="form-control" name="category" id="category">
+            <option
+              *ngFor="let subcategory of subcategories"
+              (value)="(subcategory)"
+              >{{ subcategory }}</option
+            >
+          </select>
+        </div>
+        <div class="form-group col-sm-2">
+          <label for="payment">Payment Method</label>
+
+          <select ngModel class="form-control" name="payment" id="payment">
+            <option
+              *ngFor="let paymentMethod of paymentMethods"
+              (value)="(paymentMethod)"
+              >{{ paymentMethod }}</option
+            >
+          </select>
+        </div>
+        <div class="form-group col-sm-2">
+          <label for="description">Description</label>
+
+          <textarea
+            ngModel
+            class="form-control"
+            name="description"
+            iD="description"
+            cols="3"
+            rows="1"
+          ></textarea>
+        </div>
+        <div class="form-group col-sm-2">
+          <label for="value">Value`</label>
+          <input
+            ngModel
+            placeholder="$ 100,00"
+            type="text"
+            class="form-control form-control-sm"
+            name="value"
+          />
+        </div>
+      </div>
+      <div class="btn-container">
+        <button class="btn btn-primary " type="submit">submit</button>
+        <button class="btn btn-danger " type="reset">Reset</button>
+      </div>
+    </div>
+  </form>
+</div>

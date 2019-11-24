@@ -1,0 +1,26 @@
+<div>
+  <ul>
+    <table style="width:100%">
+      <tr>
+        <th>Date</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Payment Method</th>
+        <th>Value</th>
+      </tr>
+
+      <tr *ngFor="let expense of expenses; let id = index">
+        <td>{{ expense.date }}</td>
+        <td>{{ expense.category }}</td>
+        <td>{{ expense.description }}</td>
+        <td>{{ expense.paymentMethod }}</td>
+        <td>{{ expense.value }}</td>
+        <td><button class="btn btn-success">Edit</button></td>
+        <td><button class="btn btn-danger">x</button></td>
+      </tr>
+      <tr>
+        <td>{{ total }}</td>
+      </tr>
+    </table>
+  </ul>
+</div>

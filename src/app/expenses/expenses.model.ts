@@ -1,12 +1,22 @@
 export class Expense {
-  public date: Date;
+  // public date: {
+  //   day: "string";
+  //   month: "string";
+  //   year: "string";
+  // };
+  public date: string;
   public category: string;
   public paymentMethod: string;
   public description: string;
   public value: number;
 
   constructor(
-    date: Date,
+    // date: {
+    //   day: "string";
+    //   month: "string";
+    //   year: "string";
+    // },
+    date: string,
     category: string,
     paymentMethod: string,
     description: string,
