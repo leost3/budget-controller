@@ -10,7 +10,7 @@ import { ExpensesService } from "../expenses.service";
 })
 export class ExpensesDetailsComponent implements OnInit {
   datepickerConfig: Partial<BsDatepickerConfig>;
-  expenses: Expense[] = [];
+  expenses = [];
   total: number = 0;
 
   constructor(private expensesService: ExpensesService) {
@@ -30,14 +30,19 @@ export class ExpensesDetailsComponent implements OnInit {
     this.expenses = this.expensesService.getExpenses();
     this.expensesService.expenseChanged.subscribe((expenses: Expense[]) => {
       this.expenses = expenses;
+      this.total = 0;
+      this.getTotal();
     });
     this.getTotal();
   }
 
   private getTotal() {
     for (let key in this.expenses) {
-      console.log(this.expenses[key]);
       this.total += this.expenses[key].value;
     }
+  }
+
+  removeItem(index) {
+    this.expensesService.removeExpenseItem(index);
   }
 }

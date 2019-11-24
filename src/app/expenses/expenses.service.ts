@@ -33,18 +33,12 @@ export class ExpensesService {
   expenses: Expense[] = [
     new Expense(
       new Date().toDateString(),
-      "category1",
-      "card",
-      "description",
-      10
+      "Fun",
+      "Credit card",
+      "party hard",
+      120
     ),
-    new Expense(
-      new Date().toDateString(),
-      "category1",
-      "card",
-      "description",
-      10
-    )
+    new Expense(new Date().toDateString(), "beer", "cash", "barzinho", 10)
   ];
   constructor() {}
 
@@ -61,6 +55,11 @@ export class ExpensesService {
 
   addExpenses(addedExpenses: Expense) {
     this.expenses = [...this.expenses, addedExpenses];
+    this.expenseChanged.next([...this.expenses]);
+  }
+
+  removeExpenseItem(index: number) {
+    this.expenses.splice(index, 1);
     this.expenseChanged.next([...this.expenses]);
   }
 }

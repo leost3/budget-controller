@@ -1,26 +1,46 @@
-<div>
-  <ul>
-    <table style="width:100%">
-      <tr>
-        <th>Date</th>
-        <th>Category</th>
-        <th>Description</th>
-        <th>Payment Method</th>
-        <th>Value</th>
-      </tr>
+<div class="expenses-details-page">
+  <div class="expenses-details-header">
+    <div class="expenses-details-block">
+      <span>Date</span>
+    </div>
+    <div class="expenses-details-block">
+      <span>Category</span>
+    </div>
+    <div class="expenses-details-block">
+      <span>Description</span>
+    </div>
+    <div class="expenses-details-block">
+      <span>Payment Method</span>
+    </div>
+    <div class="expenses-details-block">
+      <span>Value</span>
+    </div>
+    <div class="expenses-details-block">
+      <span>Edit</span>
+    </div>
+    <div class="expenses-details-block">
+      <span>Remove</span>
+    </div>
+  </div>
 
-      <tr *ngFor="let expense of expenses; let id = index">
-        <td>{{ expense.date }}</td>
-        <td>{{ expense.category }}</td>
-        <td>{{ expense.description }}</td>
-        <td>{{ expense.paymentMethod }}</td>
-        <td>{{ expense.value }}</td>
-        <td><button class="btn btn-success">Edit</button></td>
-        <td><button class="btn btn-danger">x</button></td>
-      </tr>
-      <tr>
-        <td>{{ total }}</td>
-      </tr>
-    </table>
-  </ul>
+  <div *ngFor="let expense of expenses; let id = index" class="expense-item">
+    <span class="date">{{ expense.date }}</span>
+    <span class="category">{{ expense.category }}</span>
+    <span class="description">{{ expense.description }}</span>
+    <span class="payment-method"
+      >{{ expense.paymentMethod
+      }}<span class="glyphicon glyphicon-credit-card"></span>
+    </span>
+    <span class="value"
+      ><span class="glyphicon glyphicon-usd"></span>{{ expense.value }}</span
+    >
+    <div class="edit-button">
+      <span
+        class="glyphicon glyphicon-edit
+      "
+      ></span>
+    </div>
+    <div class="remove-button" (click)="removeItem(id)">&#10005;</div>
+  </div>
+  <div className="total">TOTAL: {{ total }}</div>
 </div>

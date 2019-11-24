@@ -11,14 +11,21 @@
             bsDatepicker
             placement="bottom"
             [bsConfig]="datepickerConfig"
+            required
             class="form-control"
-            (value)="(todayDate)"
           />
         </div>
         <div class="form-group col-sm-2">
           <label for="category">Category</label>
 
-          <select ngModel class="form-control" name="category" id="category">
+          <select
+            required
+            ngModel
+            class="form-control"
+            name="category"
+            id="category"
+          >
+            <option value=""></option>
             <option
               *ngFor="let subcategory of subcategories"
               (value)="(subcategory)"
@@ -29,7 +36,13 @@
         <div class="form-group col-sm-2">
           <label for="payment">Payment Method</label>
 
-          <select ngModel class="form-control" name="payment" id="payment">
+          <select
+            required
+            ngModel
+            class="form-control"
+            name="payment"
+            id="payment"
+          >
             <option
               *ngFor="let paymentMethod of paymentMethods"
               (value)="(paymentMethod)"
@@ -44,7 +57,7 @@
             ngModel
             class="form-control"
             name="description"
-            iD="description"
+            id="description"
             cols="3"
             rows="1"
           ></textarea>
@@ -52,6 +65,7 @@
         <div class="form-group col-sm-2">
           <label for="value">Value`</label>
           <input
+            required
             ngModel
             placeholder="$ 100,00"
             type="text"
@@ -61,7 +75,13 @@
         </div>
       </div>
       <div class="btn-container">
-        <button class="btn btn-primary " type="submit">submit</button>
+        <button
+          [disabled]="!expenseForm.valid"
+          class="btn btn-primary "
+          type="submit"
+        >
+          submit
+        </button>
         <button class="btn btn-danger " type="reset">Reset</button>
       </div>
     </div>

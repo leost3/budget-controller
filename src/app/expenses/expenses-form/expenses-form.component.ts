@@ -35,7 +35,7 @@ export class ExpensesFormComponent implements OnInit {
       expensesForm.value.description,
       +expensesForm.value.value
     );
-
     this.expensesService.addExpenses(addedExpenses);
+    expensesForm.reset();
   }
 }
